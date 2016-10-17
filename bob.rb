@@ -1,26 +1,27 @@
 class Bob
 
-  def question
-     "Sure."
-  end
+  def question(remark)
+     remark[-1] == "?"
+  end                      # => :question
 
-  def yelling
-    "Whoa, chill out!"
-  end
+  def yelling(remark)
+    remark.upcase == remark && remark.downcase != remark
+  end                                                     # => :yelling
 
-  def blank
-    "Fine. Be that way!"
-  end
+  def saying_nothing(remark)
+    remark.strip == ""
+  end                                                                              # => :saying_nothing
 
   def hey(remark)
-    if remark == "" || remark[-1, 1] == " " || remark.split(//).last(1).join == "\t"
-      blank
-    elsif remark.upcase == remark && remark.downcase != remark
-      yelling
-    elsif remark[-1, 1] == "?"
-      question
+    if saying_nothing(remark)
+      "Fine. Be that way!"
+    elsif yelling(remark)
+      "Whoa, chill out!"
+    elsif question(remark)
+      "Sure."
     else
       "Whatever."
     end
-  end
-end
+  end                          # => :hey
+
+end  # => :hey
