@@ -13,12 +13,12 @@ class Bob
   end
 
   def hey(remark)
-    if remark[-1, 1] == "?"
-      question
-    elsif remark[-1, 1] == "" || remark[-1, 1] == " " || remark.split(//).last(1).join == "\t"
+    if remark == "" || remark[-1, 1] == " " || remark.split(//).last(1).join == "\t"
       blank
-    elsif remark.upcase == remark
+    elsif remark.upcase == remark && remark.downcase != remark
       yelling
+    elsif remark[-1, 1] == "?"
+      question
     else
       "Whatever."
     end
